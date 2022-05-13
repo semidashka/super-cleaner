@@ -2,19 +2,17 @@ import styled from 'styled-components';
 
 import useStore from '../src/useStore';
 
+import { AppName, PageTitleSmall } from '../components/ComponetsStore';
 import Card from '../components/Card';
 import StatusCircle from '../components/StatusCircle';
-
-const Title = styled.h1`
-  font-size: 50px;
-  color: ${({ theme }) => theme.colors.primary};
-`;
 
 export default function Home() {
   const rooms = useStore(state => state.rooms);
 
   return (
     <>
+      <AppName>Super Clean</AppName>
+      <PageTitleSmall>Rooms</PageTitleSmall>
       {rooms.map(room => (
         <Card key={room.id} name={room.name}>
           {room.name}

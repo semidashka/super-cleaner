@@ -1,6 +1,9 @@
-import Card from '../components/Card';
-import useStore from '../src/useStore';
 import Avatar from '@mui/material/Avatar';
+
+import useStore from '../src/useStore';
+
+import Card from '../components/Card';
+import StatusCircle from '../components/StatusCircle';
 
 export default function Flatmates() {
   const rooms = useStore(state => state.rooms);
@@ -15,7 +18,8 @@ export default function Flatmates() {
           <ul>
             {rooms.map(room => (
               <li key={room.id} name={room.name}>
-                {room.name} {room.cleaned}
+                {room.name}
+                <StatusCircle status={room.status} />
               </li>
             ))}
           </ul>

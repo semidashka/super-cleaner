@@ -12,7 +12,7 @@ const useStore = create(set => {
     flatmates: [
       {
         name: 'Maria',
-        id: nanoid(),
+        id: '777',
         photo: `https://randomuser.me/api/portraits/women/7.jpg`,
       },
       {
