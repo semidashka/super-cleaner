@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import Card from '../components/Card';
 import useStore from '../src/useStore';
 import Avatar from '@mui/material/Avatar';
@@ -12,10 +11,16 @@ export default function Flatmates() {
       {flatmates.map(flatmate => (
         <Card key={flatmate.id} name={flatmate.name}>
           <Avatar alt={flatmate.name} src={flatmate.photo} />
-          {/* <Image src={flatmate.photo}></Image>   */}
-          {flatmate.name}
+          <button>Open</button>
+          <ul>
+            {rooms.map(room => (
+              <li key={room.id} name={room.name}>
+                {room.name}
+              </li>
+            ))}
+          </ul>
 
-          <button>delete</button>
+          {flatmate.name}
         </Card>
       ))}
     </>
