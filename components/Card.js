@@ -8,7 +8,7 @@ const StyledCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: darkgray;
-
+  background-color: white;
+  padding: 1rem;
   border-radius: 10px;
 `;

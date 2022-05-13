@@ -4,7 +4,7 @@ import { SessionProvider } from 'next-auth/react';
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <SessionProvider session={session}>
-      <GlobalStyle></GlobalStyle>
+      <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
       </ThemeProvider>
@@ -17,8 +17,8 @@ export default MyApp;
 const GlobalStyle = createGlobalStyle`
   body {
     display: flex;
+    gap: 1rem;
     flex-direction: column;
-    
     justify-content: center;
     align-items: center;
     text-align: center;

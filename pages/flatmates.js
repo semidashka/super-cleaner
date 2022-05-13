@@ -15,7 +15,7 @@ export default function Flatmates() {
           <ul>
             {rooms.map(room => (
               <li key={room.id} name={room.name}>
-                {room.name}
+                {room.name} {room.cleaned}
               </li>
             ))}
           </ul>

@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 const useStore = create(set => {
   return {
     rooms: [
-      { name: 'Kitchen', id: nanoid(), assignee: null, status: false },
+      { name: 'Kitchen', id: nanoid(), assignee: null, status: true },
       { name: 'Bathroom', id: nanoid(), assignee: null, status: false },
       { name: 'Hall', id: nanoid(), assignee: null, status: false },
       { name: 'Living-room', id: nanoid(), assignee: null, status: false },
@@ -47,6 +47,7 @@ const useStore = create(set => {
           todos: state.todos.map(todo =>
             todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
           ),
+          assignedRooms: flatmateId => set(state => {}),
         };
       });
     },
