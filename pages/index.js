@@ -22,7 +22,6 @@ export default function Home() {
             <li>assignee: {room.assignee}</li>
             <li>cleaned: {room.status}</li>
           </ul>
-          <button>delete</button>
         </Card>
       ))}
     </>

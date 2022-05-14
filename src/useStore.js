@@ -4,10 +4,10 @@ import { nanoid } from 'nanoid';
 const useStore = create(set => {
   return {
     rooms: [
-      { name: 'Kitchen', id: nanoid(), assignee: null, status: true },
-      { name: 'Bathroom', id: nanoid(), assignee: null, status: false },
-      { name: 'Hall', id: nanoid(), assignee: null, status: false },
-      { name: 'Living-room', id: nanoid(), assignee: null, status: false },
+      { name: 'Kitchen', id: nanoid(), assigneeId: null, status: true },
+      { name: 'Bathroom', id: nanoid(), assigneeId: null, status: false },
+      { name: 'Hall', id: nanoid(), assigneeId: null, status: false },
+      { name: 'Living-room', id: nanoid(), assigneeId: null, status: false },
     ],
     flatmates: [
       {

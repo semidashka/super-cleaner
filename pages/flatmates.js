@@ -2,6 +2,7 @@ import Avatar from '@mui/material/Avatar';
 
 import useStore from '../src/useStore';
 
+import { AppName, PageTitleSmall } from '../components/ComponetsStore';
 import Card from '../components/Card';
 import StatusCircle from '../components/StatusCircle';
 
@@ -11,6 +12,8 @@ export default function Flatmates() {
 
   return (
     <>
+      <AppName>Super Clean</AppName>
+      <PageTitleSmall>Rooms</PageTitleSmall>
       {flatmates.map(flatmate => (
         <Card key={flatmate.id} name={flatmate.name}>
           <Avatar alt={flatmate.name} src={flatmate.photo} />
