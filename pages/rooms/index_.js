@@ -13,22 +13,17 @@ export default function Room(roomId) {
   const changeRoomStatus = useStore(state => state.changeRoomStatus);
   const currentRoom = useStore(state => state.currentRoom);
   const getRoomById = useStore(state => state.getRoomById);
-  const ROOM_ID = '001';
+  // const currentRoom = rooms[0];
+  // useEffect(() => {
+  //   getRoomById('001');
+  // });
 
   return (
     <>
-      <header>
-        <AppName>Super Clean</AppName>
-        <button
-          onClick={() => {
-            getRoomById(ROOM_ID);
-          }}
-        >
-          set room
-        </button>
-        <button onClick={() => console.log(currentRoom)}>log</button>
-      </header>
-
+      <AppName>Super Clean</AppName>
+      {/* {getRoomById('001')} */}
+      <button onClick={() => getRoomById('001')}>set room</button>
+      <button onClick={() => console.log(currentRoom)}>log</button>
       <PageTitleBig>{currentRoom.name}</PageTitleBig>
       <main>
         <div>
@@ -36,7 +31,6 @@ export default function Room(roomId) {
           <select
             onChange={event => {
               assignRoom(currentRoom.id, event.target.value);
-              getRoomById(ROOM_ID);
             }}
           >
             {flatmates.map(flatmate => (
@@ -48,13 +42,7 @@ export default function Room(roomId) {
         </div>
         <div>
           <p>Status:</p>
-          <StyledBtn
-            onClick={() => {
-              console.log(currentRoom);
-              changeRoomStatus(currentRoom.id);
-              getRoomById(ROOM_ID);
-            }}
-          >
+          <StyledBtn onClick={() => changeRoomStatus(currentRoom.id)}>
             <StatusCircle status={currentRoom.status} />
           </StyledBtn>
         </div>
