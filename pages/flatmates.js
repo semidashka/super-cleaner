@@ -19,12 +19,14 @@ export default function Flatmates() {
           <Avatar alt={flatmate.name} src={flatmate.photo} />
           <button>Open</button>
           <ul>
-            {rooms.map(room => (
-              <li key={room.id} name={room.name}>
-                {room.name}
-                <StatusCircle status={room.status} />
-              </li>
-            ))}
+            {rooms
+              .filter(room => room.assigneeId === flatmate.id)
+              .map(room => (
+                <li key={room.id} name={room.name}>
+                  {room.name}
+                  <StatusCircle status={room.status} />
+                </li>
+              ))}
           </ul>
 
           {flatmate.name}

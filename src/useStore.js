@@ -4,10 +4,10 @@ import { nanoid } from 'nanoid';
 const useStore = create(set => {
   return {
     rooms: [
-      { name: 'Kitchen', id: '001', assigneeId: null, status: true },
-      { name: 'Bathroom', id: '002', assigneeId: null, status: false },
-      { name: 'Hall', id: '003', assigneeId: null, status: false },
-      { name: 'Living-room', id: nanoid(), assigneeId: null, status: false },
+      { name: 'Kitchen', id: '001', assigneeId: '777', status: true },
+      { name: 'Bathroom', id: '002', assigneeId: '555', status: false },
+      { name: 'Hall', id: '003', assigneeId: '888', status: false },
+      { name: 'Living-room', id: nanoid(), assigneeId: '555', status: false },
     ],
     flatmates: [
       {
@@ -53,7 +53,6 @@ const useStore = create(set => {
         };
       });
     },
-    // comtinue debugging here
     changeRoomStatus: editedRoomId => {
       set(state => {
         return {
@@ -62,8 +61,6 @@ const useStore = create(set => {
             {
               ...state.currentRoom,
               status: !state.currentRoom.status,
-              // ...state.rooms.find(room => room.id === editedRoomId),
-              // status: !state.status,
             },
           ],
         };
