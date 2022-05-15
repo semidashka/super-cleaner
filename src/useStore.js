@@ -31,6 +31,15 @@ const useStore = create(set => {
         photo: `https://sm.mashable.com/t/mashable_sea/photo/default/man-fakes-death-cat-q6u_2z9w.1248.png`,
       },
     ],
+    currentRoom: {},
+    // currentRoom: { name: 'Kitchen', id: '001', assigneeId: null, status: true },
+    getRoomById: roomId => {
+      set(state => {
+        return {
+          currentRoom: { ...state.rooms.find(room => room.id === roomId) },
+        };
+      });
+    },
     assignRoom: (editedRoomId, flatmateId) => {
       set(state => {
         return {
@@ -44,6 +53,23 @@ const useStore = create(set => {
         };
       });
     },
+    // comtinue debugging here
+    changeRoomStatus: editedRoomId => {
+      set(state => {
+        return {
+          rooms: [
+            ...state.rooms.filter(room => room.id !== editedRoomId),
+            {
+              ...state.currentRoom,
+              status: !state.currentRoom.status,
+              // ...state.rooms.find(room => room.id === editedRoomId),
+              // status: !state.status,
+            },
+          ],
+        };
+      });
+    },
+
     addTodo: name => {
       set(state => {
         return { todos: [...state.todos, { name, id: nanoid() }] };
