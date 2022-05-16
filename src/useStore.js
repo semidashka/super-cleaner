@@ -41,51 +41,58 @@ const useStore = create(set => {
       });
     },
     assignRoom: (editedRoomId, flatmateId) => {
+      // edit
       set(state => {
-        return {
-          rooms: [
-            ...state.rooms.filter(room => room.id !== editedRoomId),
-            {
-              ...state.rooms.find(room => room.id === editedRoomId),
-              assigneeId: flatmateId,
-            },
-          ],
-        };
+        const updatedRooms = state.rooms.map(room => {
+          if (room.id === editedRoomId) {
+            room.assigneeId = flatmateId;
+            return room;
+          } else return room;
+        });
+        return { rooms: updatedRooms };
       });
     },
     changeRoomStatus: editedRoomId => {
       set(state => {
+        const updatedRooms = state.rooms.map(room => {
+          if (room.id === editedRoomId) {
+            room.status = !room.status;
+            return room;
+          } else return room;
+        });
         return {
-          rooms: [
-            ...state.rooms.filter(room => room.id !== editedRoomId),
-            {
-              ...state.currentRoom,
-              status: !state.currentRoom.status,
-            },
-          ],
+          rooms: updatedRooms,
         };
       });
     },
 
-    addTodo: name => {
-      set(state => {
-        return { todos: [...state.todos, { name, id: nanoid() }] };
-      });
-    },
-    deleteTodo: id => {
-      set(state => {
-        return { todos: state.todos.filter(todo => todo.id !== id) };
-      });
-    },
-    checkTodo: id => {
-      set(state => {
-        return {
-          todos: state.todos.map(todo =>
-            todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
-          ),
-        };
-      });
-    },
+    // rooms: [
+    // ...state.rooms.filter(room => room.id !== editedRoomId),
+    // {
+    //   ...state.currentRoom,
+    //   status: !state.currentRoom.status,
+    // },
+    // ],
+
+    // addTodo: name => {
+    //   set(state => {
+    //     return { todos: [...state.todos, { name, id: nanoid() }] };
+    //   });
+    // },
+    // deleteTodo: id => {
+    //   set(state => {
+    //     return { todos: state.todos.filter(todo => todo.id !== id) };
+    //   });
+    // },
+    // checkTodo: id => {
+    //   set(state => {
+    //     return {
+    //       todos: state.todos.map(todo =>
+    //         todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo
+    //       ),
+    //     };
+    //   });
+    // },
   };
 });
 
